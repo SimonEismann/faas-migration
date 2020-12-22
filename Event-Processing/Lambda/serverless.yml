@@ -93,7 +93,7 @@ functions:
       RDS_PASSWORD: ${self:custom.database.password}
     vpc:
       securityGroupIds:
-        - Fn::GetAtt: ServerlessVPC.DefaultSecurityGroup
+        - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
       subnetIds:
         - Ref: ServerlessSubnetA
         - Ref: ServerlessSubnetB
@@ -112,7 +112,7 @@ functions:
       RDS_PASSWORD: ${self:custom.database.password}
     vpc:
       securityGroupIds:
-        - Fn::GetAtt: ServerlessVPC.DefaultSecurityGroup
+        - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
       subnetIds:
         - Ref: ServerlessSubnetA
         - Ref: ServerlessSubnetB
@@ -131,7 +131,7 @@ functions:
       RDS_PASSWORD: ${self:custom.database.password}
     vpc:
       securityGroupIds:
-        - Fn::GetAtt: ServerlessVPC.DefaultSecurityGroup
+        - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
       subnetIds:
         - Ref: ServerlessSubnetA
         - Ref: ServerlessSubnetB

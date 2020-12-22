@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const createDBQuery = "CREATE TABLE IF NOT EXISTS events (ID int unsigned NOT NULL auto_increment PRIMARY KEY, source VARCHAR(255) NOT NULL, timestamp int unsigned NOT NULL, message VARCHAR(1000) NOT NULL);"
+const AWS = require('aws-sdk');
 
 const mysql = require('serverless-mysql')({
   config: {

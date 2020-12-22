@@ -13,10 +13,12 @@ npm install
 serverless deploy | tee output.txt
 
 # Collect output
-export STARTLINE=$(grep -n "endpoint" output.txt | cut -d: -f1)
-export POST=$(sed -n '27p' < output.txt | cut -b 10-)
-export GET=$(sed -n '29p' < output.txt | cut -b 9-)
-export GET2=$(sed -n '28p' < output.txt | cut -b 9-)
+export LINE=$(grep -n "/ingest" output.txt | cut -d: -f1)
+export POST=$(sed -n "${LINE}p" < output.txt | cut -b 10-)
+export LINE=$(grep -n "/latest" output.txt | cut -d: -f1)
+export GET=$(sed -n "${LINE}p" < output.txt | cut -b 9-)
+export LINE=$(grep -n "/list" output.txt | cut -d: -f1)
+export GET2=$(sed -n "${LINE}p" < output.txt | cut -b 9-)
 
 # Configure load script
 sed -i "s@URL1PLACEHOLDER@$POST@g" load.lua

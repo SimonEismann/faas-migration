@@ -16,10 +16,12 @@ serverless deploy | tee output.txt
 export STARTLINE=$(grep -n "endpoint" output.txt | cut -d: -f1)
 export POST=$(sed -n '27p' < output.txt | cut -b 10-)
 export GET=$(sed -n '29p' < output.txt | cut -b 9-)
+export GET2=$(sed -n '28p' < output.txt | cut -b 9-)
 
 # Configure load script
 sed -i "s@URL1PLACEHOLDER@$POST@g" load.lua
 sed -i "s@URL2PLACEHOLDER@$GET@g" load.lua
+sed -i "s@URL3PLACEHOLDER@$GET2@g" load.lua
 
 # Run Load
 java -jar httploadgenerator.jar loadgenerator > loadlogs.txt 2>&1 &

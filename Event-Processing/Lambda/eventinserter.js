@@ -11,12 +11,12 @@ const mysql = require('serverless-mysql')({
   }
 });
 
-const lambdaHandler = (event, context, callback) => {
-  let creationResult = mysql.query(createDBQuery);
+const lambdaHandler = (event, context) => {
+  let creationResult = await mysql.query(createDBQuery);
   const evt= JSON.parse(event.Records[0].body);
   console.log(creationResult);
   console.log(JSON.stringify(evt));
-  let insertResult = mysql.query({
+  let insertResult = await mysql.query({
     sql: 'INSERT INTO events(source, timestamp, message) VALUES (?, ?, ?);',
     timeout: 10000,
     values: [evt.source, evt.timestamp, evt.message]
@@ -28,7 +28,7 @@ const lambdaHandler = (event, context, callback) => {
 
 
 // monitoring function wrapping arbitrary payload code
-function handler(event, context, payload, callback) {
+async function handler(event, context, payload, callback) {
   const child_process = require("child_process");
   const v8 = require("v8");
   const { performance, PerformanceObserver, monitorEventLoopDelay } = require("perf_hooks");
@@ -42,7 +42,7 @@ function handler(event, context, payload, callback) {
 
   const durationStart = process.hrtime();
 
-  const ret = wrapped(event, context, callback);
+  const ret = await wrapped(event, context, callback);
   h.disable();
 
   const durationDiff = process.hrtime(durationStart);
@@ -64,7 +64,7 @@ function handler(event, context, payload, callback) {
 
   const dynamodb = new AWS.DynamoDB({ region: 'eu-west-1' });
   if (!event.warmup)
-    dynamodb.putItem({
+    await dynamodb.putItem({
       Item: {
         "id": {
           S: uuidv4()
@@ -146,17 +146,11 @@ function handler(event, context, payload, callback) {
         }
       },
       TableName: "eventinserter"
-    }, function(err, data) {
-  if (err) {
-    console.log("Error", err);
-  } else {
-    console.log("Success", data.Item);
-  }
-});
+    });
 
   return ret;
 };
 
-exports.insertEvent = function(event, context, callback) {
-  return handler(event, context, lambdaHandler, callback);
+exports.insertEvent = async (event, context, callback) => {
+  return await handler(event, context, lambdaHandler);
 } 

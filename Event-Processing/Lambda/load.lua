@@ -11,6 +11,8 @@ function onCall(callnum)
 		return "[POST]{\"type\": \"state_change\", \"source\": \"opweeyozkbvoddlfqnzqjwbhxdnvot\", \"timestamp\": 1566246, \"message\": \"mymessage\"}URL1PLACEHOLDER"
 	elseif callnum == 4 then	
 		return "[GET]URL2PLACEHOLDER"
+	elseif callnum == 5 then	
+		return "[GET]URL3PLACEHOLDER"
 	else
 		return nil;
 	end

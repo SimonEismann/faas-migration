@@ -37,6 +37,7 @@ provider:
       Action:
         - "sns:*"
         - "sqs:*"
+        - dynamodb:PutItem
 
 functions:
   ingest:
@@ -139,6 +140,18 @@ functions:
 
 resources:
   Resources:
+    EventInserterTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        TableName: eventinserter
     SQSQueue:
       Type: "AWS::SQS::Queue"
       Properties:

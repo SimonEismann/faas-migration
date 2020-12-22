@@ -11,7 +11,7 @@ const mysql = require('serverless-mysql')({
   }
 });
 
-const lambdaHandler = (event, context) => {
+const lambdaHandler = async (event, context) => {
   let creationResult = await mysql.query(createDBQuery);
   const evt= JSON.parse(event.Records[0].body);
   console.log(creationResult);

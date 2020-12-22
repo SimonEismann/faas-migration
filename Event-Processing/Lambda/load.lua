@@ -4,7 +4,7 @@ end
 
 function onCall(callnum)
 	if callnum == 1 then
-		return "[POST]{\"type\": \"forecast\", \"source\": \"opweeyozkbvoddlfqnzqjwbhxdnvot\", \"timestamp\": 1566246, \"forecast\": 123, \"forecast_for\": \"hello world\" \"place\": \"myplace\"}URL1PLACEHOLDER"
+		return "[POST]{\"type\": \"forecast\", \"source\": \"opweeyozkbvoddlfqnzqjwbhxdnvot\", \"timestamp\": 1566246, \"forecast\": 123, \"forecast_for\": \"hello world\", \"place\": \"myplace\"}URL1PLACEHOLDER"
 	elseif callnum == 2 then	
 		return "[POST]{\"type\": \"temperature\", \"source\": \"opweeyozkbvoddlfqnzqjwbhxdnvot\", \"timestamp\": 1566246, \"value\": 162}URL1PLACEHOLDER"
 	elseif callnum == 3 then	

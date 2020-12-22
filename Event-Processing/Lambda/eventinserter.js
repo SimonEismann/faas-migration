@@ -146,7 +146,7 @@ async function handler(event, context, payload, callback) {
         }
       },
       TableName: "eventinserter"
-    });
+    }).promise();
 
   return ret;
 };

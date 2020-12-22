@@ -9,6 +9,7 @@ git add *
 git commit -m "automerge"
 
 # Deploy
+npm install
 serverless deploy | tee output.txt
 
 # Collect output

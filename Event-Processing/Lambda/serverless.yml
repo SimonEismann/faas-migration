@@ -152,6 +152,7 @@ resources:
             AttributeName: id
             KeyType: HASH
         TableName: eventinserter
+        BillingMode: PAY_PER_REQUEST
     SQSQueue:
       Type: "AWS::SQS::Queue"
       Properties:

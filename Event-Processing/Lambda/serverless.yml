@@ -25,9 +25,9 @@ plugins:
   - serverless-pseudo-parameters
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   stage: dev
-  region: us-east-1
+  region: eu-west-1
   environment:
     CLOUD_REGION: '#{AWS::Region}'
     CLOUD_ACCOUNT_ID: '#{AWS::AccountId}'

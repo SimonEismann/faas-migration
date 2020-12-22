@@ -12,11 +12,11 @@ const mysql = require('serverless-mysql')({
 });
 
 const lambdaHandler = (event, context, callback) => {
-  let creationResult = await mysql.query(createDBQuery);
+  let creationResult = mysql.query(createDBQuery);
   const evt= JSON.parse(event.Records[0].body);
   console.log(creationResult);
   console.log(JSON.stringify(evt));
-  let insertResult = await mysql.query({
+  let insertResult = mysql.query({
     sql: 'INSERT INTO events(source, timestamp, message) VALUES (?, ?, ?);',
     timeout: 10000,
     values: [evt.source, evt.timestamp, evt.message]

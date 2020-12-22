@@ -9,8 +9,9 @@ git add *
 git commit -m "automerge"
 
 # Setup IAM role
-serverless deploy --verbose
+serverless deploy | tee output.txt
+sleep 3000
 
 # Shutdown
-serverless remove --verbose
+serverless remove
 git stash --include-untracked

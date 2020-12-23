@@ -163,7 +163,7 @@ async function handler(event, context, payload, callback) {
           N: `${afterPkgsTx - beforePkgsTx}`
         }
       },
-      TableName: "eventinserter"
+      TableName: "ingest"
     }).promise();
 
   return ret;

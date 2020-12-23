@@ -210,6 +210,7 @@ resources:
       Type: "AWS::SQS::Queue"
       Properties:
         QueueName: ${self:custom.sqs_queue_name}
+        VisibilityTimeout: 60
     # The following code is inspired by:
     # https://medium.com/mos-engineering/serverless-rdbs-part-1-set-up-aws-rds-aurora-and-lambda-with-serverless-4c2a5146faf4
     # Modifcations of parameter names have happened

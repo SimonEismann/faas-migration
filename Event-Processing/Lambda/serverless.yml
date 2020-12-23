@@ -140,6 +140,58 @@ functions:
 
 resources:
   Resources:
+    IngestTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        TableName: ingest
+        BillingMode: PAY_PER_REQUEST
+    FormatTemperatureTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        TableName: formattemperature
+        BillingMode: PAY_PER_REQUEST
+    FormatForecastTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        TableName: formatforecast
+    FormatStateChangedTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        TableName: formatstatechanged
+        BillingMode: PAY_PER_REQUEST
+        BillingMode: PAY_PER_REQUEST
     EventInserterTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:

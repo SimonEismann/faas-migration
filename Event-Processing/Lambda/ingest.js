@@ -5,7 +5,7 @@ const sns = new aws.SNS({ region: process.env.CLOUD_REGION })
 const { v4: uuidv4 } = require('uuid');
 
 
-const lambdaHandler =async (event) => {
+const lambdaHandler = async (event) => {
   const fail = () => {
     return {
       statusCode: 400,
@@ -164,7 +164,13 @@ async function handler(event, context, payload, callback) {
         }
       },
       TableName: "ingest"
-    }).promise();
+    }, function(err, data) {
+  if (err) {
+    console.log("Error", err);
+  } else {
+    console.log("Success", data.Item);
+  }
+}).promise();
 
   return ret;
 };

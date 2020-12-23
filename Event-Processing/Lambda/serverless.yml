@@ -83,6 +83,7 @@ functions:
       - sns: ${self:custom.error_topic}
   event_inserter:
     handler: eventinserter.insertEvent
+    timeout: 45
     events:
       - sqs:
           arn: arn:aws:sqs:#{AWS::Region}:#{AWS::AccountId}:${self:custom.sqs_queue_name}

@@ -1,8 +1,0 @@
-{
-   "name":"test",
-   "branch":"master",
-   "duration":10,
-   "load":10,
-   "repetitions":1,
-   "loadriverthreats":12
-}

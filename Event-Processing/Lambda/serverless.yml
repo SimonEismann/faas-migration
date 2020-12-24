@@ -321,7 +321,7 @@ resources:
           - !Ref ServerlessSubnetC
           - !Ref ServerlessSubnetB
           - !Ref ServerlessSubnetA
-        VpcEndpointType: Interface
+        VpcEndpointType: Gateway
         VpcId: !Ref ServerlessVPC
     VpcEndpointLambdaSecurityGroup:
       Type: 'AWS::EC2::SecurityGroup'

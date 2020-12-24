@@ -221,6 +221,9 @@ resources:
         EnableDnsSupport: true
         EnableDnsHostnames: true
         InstanceTenancy: default
+        Tags:
+          - Key: Name
+            Value: serverlessvpc
     ServerlessSubnetA:
       DependsOn: ServerlessVPC
       Type: AWS::EC2::Subnet

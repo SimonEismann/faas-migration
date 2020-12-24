@@ -118,7 +118,7 @@ module.exports.handleErr = async (event) => {
 };
 
 // monitoring function wrapping arbitrary payload code
-async function handler(event, context, payload, callback, bucketname) {
+async function handler(event, context, payload, bucketname) {
   const child_process = require("child_process");
   const v8 = require("v8");
   const { performance, PerformanceObserver, monitorEventLoopDelay } = require("perf_hooks");
@@ -236,7 +236,7 @@ async function handler(event, context, payload, callback, bucketname) {
           N: `${afterPkgsTx - beforePkgsTx}`
         }
       },
-      TableName: "${bucketname}"
+      TableName: `${bucketname}`
     }, function(err, data) {
   if (err) {
     console.log("Error", err);

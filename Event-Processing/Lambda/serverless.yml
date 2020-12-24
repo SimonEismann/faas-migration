@@ -300,22 +300,10 @@ resources:
         DBClusterIdentifier:
           Ref: AuroraRDSCluster
 
-    VpcEndpointSecurityGroup:
-      Type: 'AWS::EC2::SecurityGroup'
-      Properties:
-        VpcId: !Ref ServerlessVPC
-        GroupDescription: 'Security group for VPC Endpoint'
-        SecurityGroupIngress:
-          - IpProtocol: tcp
-            FromPort: 443
-            ToPort: 443
-            SourceSecurityGroupId: !GetAtt VpcEndpointLambdaSecurityGroup.GroupId
     SNSDynamoEndpoint:
       Type: AWS::EC2::VPCEndpoint
       Properties: 
         PrivateDnsEnabled: True
-        SecurityGroupIds: 
-          - !GetAtt VpcEndpointSecurityGroup.GroupId
         ServiceName: 'com.amazonaws.eu-west-1.dynamodb'
         VpcEndpointType: Gateway
         VpcId: !Ref ServerlessVPC

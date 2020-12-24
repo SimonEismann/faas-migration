@@ -132,7 +132,7 @@ async function handler(event, context, payload, bucketname) {
 
   const durationStart = process.hrtime();
 
-  const ret = await wrapped(event, context, callback);
+  const ret = await wrapped(event, context);
   h.disable();
 
   const durationDiff = process.hrtime(durationStart);

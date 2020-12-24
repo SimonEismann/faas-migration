@@ -303,7 +303,6 @@ resources:
     SNSDynamoEndpoint:
       Type: AWS::EC2::VPCEndpoint
       Properties: 
-        PrivateDnsEnabled: True
         ServiceName: 'com.amazonaws.eu-west-1.dynamodb'
         VpcEndpointType: Gateway
         VpcId: !Ref ServerlessVPC

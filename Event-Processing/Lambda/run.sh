@@ -57,6 +57,14 @@ aws dynamodb scan --table-name formatstatechanged --query "Items[*].[duration.N,
 cat formatstatechanged.csv
 sleep 300000
 
+# Move results
+mkdir -p /results/$EXP_NAME/Repetition_$EXP_REPETITION
+mv eventinserter.csv /results/$EXP_NAME/Repetition_$EXP_REPETITION/eventinserter.csv
+mv ingest.csv /results/$EXP_NAME/Repetition_$EXP_REPETITION/ingest.csv
+mv formattemperature.csv /results/$EXP_NAME/Repetition_$EXP_REPETITION/formattemperature.csv
+mv formatforecast.csv /results/$EXP_NAME/Repetition_$EXP_REPETITION/formatforecast.csv
+mv formatstatechanged.csv /results/$EXP_NAME/Repetition_$EXP_REPETITION/formatstatechanged.csv
+
 # Shutdown
 serverless remove
 git stash --include-untracked

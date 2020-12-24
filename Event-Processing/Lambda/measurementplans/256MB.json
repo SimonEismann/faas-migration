@@ -2,7 +2,7 @@
    "name":"256MB",
    "branch":"256MB",
    "duration":600,
-   "load":40,
+   "load":10,
    "repetitions":1,
-   "loadriverthreats":128
+   "loadriverthreats":24
 }

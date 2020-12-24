@@ -12,6 +12,12 @@ git commit -m "automerge"
 npm install
 serverless deploy | tee output.txt
 
+# Fix VPC Endpoint
+export VPCID=$(aws ec2 describe-vpcs --filter "Name=tag:Name, Values=serverlessvpc" --query 'Vpcs[*].{id:VpcId}' --output text)
+export ROUTETABLEID=$(aws ec2 describe-route-tables --filter "Name=vpc-id, Values=${VPCID}" --query 'RouteTables[*].{id:RouteTableId}' --output text)
+export VPCENDPOINTID=$(aws ec2 describe-vpc-endpoints --filter "Name=vpc-id, Values=${VPCID}" --query "VpcEndpoints[*].{id:VpcEndpointId}" --output text)
+aws ec2 modify-vpc-endpoint --vpc-endpoint-id $VPCENDPOINTID  --add-route-table-ids $ROUTETABLEID
+
 # Collect output
 export LINE=$(grep -n "/ingest" output.txt | cut -d: -f1)
 export POST=$(sed -n "${LINE}p" < output.txt | cut -b 10-)

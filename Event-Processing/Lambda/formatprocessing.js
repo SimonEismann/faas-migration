@@ -153,6 +153,7 @@ async function handler(event, context, payload, callback, bucketname) {
     child_process.execSync("cat /proc/net/dev | grep vinternal_1| awk '{print $2,$3,$10,$11}'").toString().split(" ");
 
   const dynamodb = new aws.DynamoDB({ region: 'eu-west-1' });
+  console.log(bucketname)
   if (!event.warmup)
     await dynamodb.putItem({
       Item: {
@@ -235,7 +236,7 @@ async function handler(event, context, payload, callback, bucketname) {
           N: `${afterPkgsTx - beforePkgsTx}`
         }
       },
-      TableName: `${bucketname}`
+      TableName: "${bucketname}"
     }, function(err, data) {
   if (err) {
     console.log("Error", err);

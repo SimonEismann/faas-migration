@@ -26,6 +26,7 @@ sed -i "s@URL2PLACEHOLDER@$GET@g" load.lua
 sed -i "s@URL3PLACEHOLDER@$GET2@g" load.lua
 
 # Run Load
+sleep 180
 java -jar httploadgenerator.jar loadgenerator > loadlogs.txt 2>&1 &
 chmod 777 generateConstantLoad.sh
 ./generateConstantLoad.sh $EXP_LOAD $EXP_DURATION

@@ -317,10 +317,6 @@ resources:
         SecurityGroupIds: 
           - !GetAtt VpcEndpointSecurityGroup.GroupId
         ServiceName: 'com.amazonaws.eu-west-1.dynamodb'
-        SubnetIds: 
-          - !Ref ServerlessSubnetC
-          - !Ref ServerlessSubnetB
-          - !Ref ServerlessSubnetA
         VpcEndpointType: Gateway
         VpcId: !Ref ServerlessVPC
     VpcEndpointLambdaSecurityGroup:

@@ -248,13 +248,13 @@ async function handler(event, context, payload, callback, bucketname) {
 };
 
 exports.formatTemperatureEvent = async (event, context, callback) => {
-  return await handler(event, context, lambdaHandler1, 'formattemperature');
+  return await handler(event, context, lambdahandler1, 'formattemperature');
 } 
 
 exports.formatForecastEvent = async (event, context, callback) => {
-  return await handler(event, context, lambdaHandler2, 'formatforecast');
+  return await handler(event, context, lambdahandler2, 'formatforecast');
 } 
 
 exports.formatStateChangeEvent = async (event, context, callback) => {
-  return await handler(event, context, lambdaHandler3, 'formatstatechanged');
+  return await handler(event, context, lambdahandler3, 'formatstatechanged');
 } 

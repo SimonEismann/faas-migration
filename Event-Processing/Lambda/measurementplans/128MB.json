@@ -3,6 +3,6 @@
    "branch":"128MB",
    "duration":600,
    "load":10,
-   "repetitions":1,
+   "repetitions":10,
    "loadriverthreats":24
 }
